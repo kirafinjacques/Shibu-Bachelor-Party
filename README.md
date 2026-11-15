@@ -14,7 +14,7 @@ It deploys to GitHub Pages automatically on every push to `main`.
 7. **Freedom countdown:** live until 23.12.2026, 3PM IST, then it switches to "IT'S PARTY TIME!".
 8. **Finale:** disco ball, light beams, a champagne pop, confetti, dancing silhouettes, and a WhatsApp RSVP.
 
-The music and sound effects (party beat, cork pop, whoosh, clicks, countdown ticks) are generated in the browser with the Web Audio API, so the site has no audio files to download. The **Music on/off** button in the header controls all sound.
+Background music is **Bindaas** (`assets/music/bindaas.mp3`, a 128 kbps copy to keep it light on phones). It only downloads and plays after the visitor taps **Enter the party**. The sound effects (cork pop, whoosh, clicks, countdown ticks) are generated in the browser with the Web Audio API. The **Music on/off** button in the header controls all sound.
 
 ## Customising
 
@@ -23,7 +23,7 @@ The music and sound effects (party beat, cork pop, whoosh, clicks, countdown tic
 | Date, time, venue, map link, WhatsApp RSVP number and message, music file | The `PARTY` object at the top of `script.js` |
 | All visible text (names, quotes, rules, captions) | `index.html` |
 | Gallery photos | Put files in `assets/photos/`, then edit `data-image` and `src` on each `.gallery-item` in `index.html` |
-| Your own music | Put an MP3 in `assets/music/` and set `PARTY.musicSource = "assets/music/party.mp3"` |
+| Music | Replace `assets/music/bindaas.mp3`, or point `PARTY.musicSource` at another MP3 in `assets/music/`. Set it to `""` for the built-in synthesized beat |
 
 If you change the date, also update the date and time shown in `index.html`, including the "23.12.26" note in the countdown section.
 
