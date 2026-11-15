@@ -15,7 +15,7 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=3" />
+    <link rel="stylesheet" href="styles.css?v=5" />
     <script src="script.js?v=3" defer></script>
   </head>
   <body>
@@ -24,11 +24,7 @@
         <span class="brand-mark">SA</span>
         <span>SA <i>’26</i></span>
       </a>
-      <nav class="desktop-nav" id="mainNav" aria-label="Main navigation">
-        <a href="#invite">The invite</a>
-        <a href="#details">The details</a>
-        <a href="#memories">The memories</a>
-      </nav>
+      
       <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false" aria-label="Turn music on">
         <span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
         <span class="sound-label">Sound off</span>
@@ -43,24 +39,23 @@
         <div class="hero-smoke smoke-a"></div>
         <div class="hero-smoke smoke-b"></div>
         <div class="hero-lights" aria-hidden="true"><span></span><span></span><span></span></div>
-        <div class="hero-content reveal">
+        <img
+          class="hero-reference-image"
+          src="assets/sa-landing-reference.png"
+          alt=""
+          aria-hidden="true"
+          fetchpriority="high"
+        />
+        <div class="hero-content visually-hidden">
           <p class="eyebrow"><span class="eyebrow-line"></span> One last celebration before forever <span class="eyebrow-line"></span></p>
           <div class="hero-stamp"><span>ONE NIGHT ONLY</span><b>✳</b><span>FRIENDS ONLY</span></div>
           <h1 class="hero-title">A LEGEND<br /><span>GOES <br class="mobile-title-break" />OFFLINE.</span></h1>
           <p class="hero-name">SA <span>the groom &amp; bride, celebrated together.</span></p>
           <div class="hero-heart-divider" aria-hidden="true"><span></span><b>♡</b><span></span></div>
           <p class="hero-copy">One unforgettable night with friends before the big day.</p>
-          <a class="button button-gold hero-cta" href="#invite">Show me the evidence <span aria-hidden="true">↓</span></a>
         </div>
-        <div class="hero-figure" aria-hidden="true">
-          <picture class="hero-picture">
-            <source media="(max-width: 760px)" srcset="https://images.unsplash.com/photo-1658386193986-fb1514c66ada?auto=format&amp;fit=crop&amp;w=1000&amp;q=85" />
-            <img src="https://images.unsplash.com/photo-1608416026650-66b4e0c0c301?auto=format&amp;fit=crop&amp;w=1400&amp;q=85" alt="" fetchpriority="high" />
-          </picture>
-          <div class="hero-photo-wash"></div>
-        </div>
-        <a class="scroll-hint" href="#reveal"><span></span> Scroll to celebrate the couple</a>
-        <div class="hero-side-note">AVOKI RESORT · 23 DECEMBER 2026</div>
+        <a class="hero-cta" href="#invite" aria-label="Show me the evidence">Show me the evidence</a>
+        <a class="scroll-hint" href="#reveal" aria-label="Scroll to celebrate the couple">Scroll to celebrate the couple</a>
       </section>
 
       <section class="groom-section section-dark" id="reveal">
