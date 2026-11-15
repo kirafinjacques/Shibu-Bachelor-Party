@@ -5,8 +5,8 @@ It deploys to GitHub Pages automatically on every push to `main`.
 
 ## Experience
 
-1. **Intro gate:** "WARNING! WARNING!" and "THE GROOM IS LOSING HIS FREEDOM!", then **Enter the party** (with sound) or **Enter without sound**. No audio plays before this click.
-2. **Groom reveal:** 3D gold "SA", a spotlight, sunglasses dropping in, a champagne glass, and funny status captions.
+1. **Intro gate:** "WARNING! WARNING!" and "GROOM & BRIDE – ONE LAST BASH!", then **Enter the party** (with sound) or **Enter without sound**. No audio plays before this click.
+2. **Couple reveal:** 3D gold "SA", a spotlight, sunglasses dropping in, a champagne glass, and funny status captions.
 3. **Invitation card**, the **Bride vs Groom battle poll**, and **five quotes** revealed one by one.
 4. **Bachelor Party Details:** animated calendar, clock and pin icons, an embedded map, an `.ics` download, Google Calendar, and Google Maps directions.
 5. **Party rules:** tap each rule to "swear" by it. Swearing all five triggers confetti.

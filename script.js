@@ -413,7 +413,7 @@ const revealObserver = new IntersectionObserver(
 );
 document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
 
-// Section-level hooks: groom reveal fanfare, finale champagne pop + confetti.
+// Section-level hooks: couple reveal fanfare, finale champagne pop + confetti.
 const moments = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
