@@ -15,8 +15,8 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=5" />
-    <script src="script.js?v=3" defer></script>
+    <link rel="stylesheet" href="styles.css?v=7" />
+    <script src="script.js?v=4" defer></script>
   </head>
   <body>
     <header class="site-header">
@@ -90,6 +90,39 @@
           <p class="invite-message">Before the responsibilities, family functions, shopping lists and <em>“Where are you?”</em> phone calls begin... let's gather for one unforgettable night of madness, laughter, friendship and crazy memories!</p>
           <p class="invite-slogan">GOOD FRIENDS. BAD IDEAS.<br /><span>UNFORGETTABLE MEMORIES.</span></p>
           <div class="card-corner corner-bl">✳</div><div class="card-corner corner-br">✳</div>
+        </div>
+      </section>
+
+      <section class="battle-section section-dark" id="battle">
+        <div class="section-topline"><span>THE ULTIMATE SHOWDOWN</span><span>BRIDE SQUAD VS GROOM SQUAD</span></div>
+        <div class="battle-wrap">
+          <p class="eyebrow">Two teams. One battlefield. One trophy!</p>
+          <h2>THE ULTIMATE<br /><span>BATTLE PARTY!</span> <b aria-hidden="true">🏆</b></h2>
+          <p class="battle-copy">The Bride Squad and Groom Squad are ready to battle it out in an epic showdown filled with exciting games, crazy challenges, laughter and unforgettable moments.</p>
+          <p class="battle-question">Who will conquer the challenges?<br /><strong>And most importantly… who will take home the trophy?</strong></p>
+          <form class="battle-poll" id="battlePoll">
+            <fieldset>
+              <legend>Cast your vote</legend>
+              <div class="battle-options">
+                <label class="battle-option battle-bride">
+                  <input type="radio" name="battle-team" value="Bride Team" required />
+                  <span class="battle-team-icon" aria-hidden="true">👑</span>
+                  <span class="battle-team-name">Bride Team</span>
+                  <span class="battle-team-caption">Bride Squad</span>
+                </label>
+                <label class="battle-option battle-groom">
+                  <input type="radio" name="battle-team" value="Groom Team" required />
+                  <span class="battle-team-icon" aria-hidden="true">🏆</span>
+                  <span class="battle-team-name">Groom Team</span>
+                  <span class="battle-team-caption">Groom Squad</span>
+                </label>
+              </div>
+            </fieldset>
+            <button class="battle-vote-button" type="submit">Cast your vote <span aria-hidden="true">↗</span></button>
+            <p class="battle-poll-note">For fun: your pick is saved on this device and is not part of a live shared tally.</p>
+            <p class="battle-poll-status" id="battlePollStatus" role="status" aria-live="polite"></p>
+            <p class="battle-poll-result" id="battlePollResult" hidden></p>
+          </form>
         </div>
       </section>
 

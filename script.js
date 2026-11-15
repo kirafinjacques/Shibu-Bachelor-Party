@@ -26,6 +26,56 @@ mainNav.querySelectorAll("a").forEach((link) => {
   });
 });
 
+const battlePoll = document.querySelector("#battlePoll");
+const battlePollStatus = document.querySelector("#battlePollStatus");
+const battlePollResult = document.querySelector("#battlePollResult");
+const battleVoteButton = battlePoll.querySelector(".battle-vote-button");
+const battleVoteStorageKey = "sa-battle-team-vote";
+const battleVoteOptions = [...battlePoll.querySelectorAll('input[name="battle-team"]')];
+
+function showBattleVote(team) {
+  const option = battleVoteOptions.find((voteOption) => voteOption.value === team);
+  if (!option) {
+    return;
+  }
+
+  option.checked = true;
+  battlePollResult.textContent = `Your pick: ${team}. Let the showdown begin!`;
+  battlePollResult.hidden = false;
+  battlePollStatus.textContent = "Vote saved on this device.";
+  battleVoteButton.firstChild.textContent = "Update my pick ";
+}
+
+try {
+  const savedBattleVote = localStorage.getItem(battleVoteStorageKey);
+  if (savedBattleVote) {
+    showBattleVote(savedBattleVote);
+  }
+} catch (error) {
+  console.error("Could not load the saved battle poll vote:", error);
+  battlePollStatus.textContent = "Your browser could not load a saved vote. You can still vote for this visit.";
+}
+
+battlePoll.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const selectedTeam = battleVoteOptions.find((option) => option.checked)?.value;
+  if (!selectedTeam) {
+    battlePollStatus.textContent = "Choose Bride Squad or Groom Squad before voting.";
+    return;
+  }
+
+  try {
+    localStorage.setItem(battleVoteStorageKey, selectedTeam);
+    showBattleVote(selectedTeam);
+  } catch (error) {
+    console.error("Could not save the battle poll vote:", error);
+    battlePollStatus.textContent = "Your browser could not save this vote. Your pick is still selected for this visit.";
+    battlePollResult.textContent = `Your pick: ${selectedTeam}. Let the showdown begin!`;
+    battlePollResult.hidden = false;
+    battleVoteButton.firstChild.textContent = "Update my pick ";
+  }
+});
+
 soundToggle.addEventListener("click", async () => {
   if (!musicSource) {
     soundLabel.textContent = "Add music";
