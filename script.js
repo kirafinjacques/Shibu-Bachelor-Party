@@ -96,7 +96,7 @@ const calendarEvent = [
   `DTEND:${eventEnd}`,
   "SUMMARY:SA's Bachelor Party",
   "LOCATION:AVOKI RESORT\\, Kerala",
-  "DESCRIPTION:One brother. One last bachelor night. A million memories.",
+  "DESCRIPTION:A bachelor party celebration for the groom and bride. A million memories.",
   "END:VEVENT",
   "END:VCALENDAR",
 ].join("\r\n");
