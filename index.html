@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#100b12" />
+    <!-- The design is already dark: stop Android/Samsung "force dark" modes from recolouring it -->
+    <meta name="color-scheme" content="dark" />
+    <meta name="supported-color-schemes" content="dark" />
+    <meta name="darkreader-lock" />
     <meta
       name="description"
       content="WARNING! Shibu &amp; Abhisha are losing their freedom. You're invited to SA's Bachelor Party, 23.12.2026 at Avoki Resort, Kerala."
@@ -19,7 +23,7 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,500;1,600&family=Great+Vibes&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=15" />
+    <link rel="stylesheet" href="styles.css?v=16" />
     <script src="script.js?v=11" defer></script>
   </head>
   <body>
@@ -164,7 +168,7 @@
             <div class="detail-row"><span class="detail-icon icon-cal" aria-hidden="true"><b>DEC</b><i>23</i></span><div><small>THE DATE</small><strong>23.12.2026</strong><span>Wednesday · mark it in gold</span></div></div>
             <div class="detail-row"><span class="detail-icon icon-clock" aria-hidden="true"><i class="hand-h"></i><i class="hand-m"></i></span><div><small>THE TIME</small><strong>3PM to 10PM</strong><span>Fashionably on time, please</span></div></div>
             <div class="detail-row"><span class="detail-icon icon-pin" aria-hidden="true">📍</span><div><small>THE VENUE</small><strong>AVOKI RESORT, Kerala</strong><span>Kinfra Film &amp; Video Park, Kazhakkoottam, Thiruvananthapuram</span></div></div>
-            <div class="detail-row detail-dress"><span class="detail-icon icon-dress" aria-hidden="true"><i>✦</i><i>✦</i><i>✦</i></span><div><small>THE DRESS CODE</small><strong class="glitter-text">Glittery Black</strong><span>Sequins, shimmer &amp; sparkle — all in black</span></div></div>
+            <div class="detail-row detail-dress"><span class="detail-icon icon-dress" aria-hidden="true"><i>✦</i><i>✦</i><i>✦</i></span><div><small>THE DRESS CODE</small><strong class="glitter-text" data-text="Glittery Black">Glittery Black</strong><span>Sequins, shimmer &amp; sparkle — all in black</span></div></div>
             <div class="detail-map">
               <iframe
                 src="https://maps.google.com/maps?q=Avoki+Hotels+and+Resorts,+Kinfra+Film+And+Video+Park,+Kazhakkoottam,+Thiruvananthapuram,+Kerala&z=15&output=embed"

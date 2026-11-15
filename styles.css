@@ -1212,3 +1212,23 @@ body.entered .gate-content { opacity: 0; transform: scale(1.05); filter: blur(6p
 @keyframes twinkle { 0%, 100% { opacity: .25; transform: scale(.6) rotate(0); } 50% { opacity: 1; transform: scale(1.15) rotate(45deg); } }
 @keyframes glitterSweep { 0% { background-position: 100% 0; } 60%, 100% { background-position: 0 0; } }
 @media (prefers-reduced-motion: reduce) { .glitter-text { -webkit-text-fill-color: #141014; } }
+
+/* ---------- v16: robust against Android / Samsung forced dark mode ---------- */
+/* The site is designed dark; declaring support stops browsers auto-darkening it. */
+@media (prefers-color-scheme: dark) {
+  :root { color-scheme: dark; }
+}
+/* Glitter text: solid text underneath, shimmer drawn on top, so it can never vanish. */
+.glitter-text {
+  position: relative; display: inline-block; color: #141014; background: none; -webkit-text-fill-color: currentColor; animation: none;
+}
+.glitter-text::after {
+  position: absolute; inset: 0; content: attr(data-text); pointer-events: none;
+  background: linear-gradient(100deg, transparent 0%, transparent 40%, #c9a14f 47%, #f6e3ad 50%, #c9a14f 53%, transparent 60%, transparent 100%);
+  background-size: 260% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
+  animation: glitterSweep 3.6s ease-in-out infinite;
+}
+/* Menu lines drawn as borders (foreground) instead of backgrounds. */
+.site-header .menu-toggle span { height: 0; border-top: 1.5px solid var(--white); background: none; }
+/* Install progress bar fill as a border so it survives recolouring. */
+.install-bar b { height: 0; border-top: 6px solid var(--gold); background: none; }
