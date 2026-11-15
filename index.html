@@ -16,29 +16,34 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,500;1,600&family=Great+Vibes&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=10" />
+    <link rel="stylesheet" href="styles.css?v=11" />
     <script src="script.js?v=9" defer></script>
   </head>
   <body>
-    <!-- INTRO: dramatic full-screen warning gate. Audio only starts after a button here is pressed. -->
+    <!-- INTRO: elegant full-screen gate. Audio only starts after a button here is pressed. -->
     <div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gateTitle">
-      <div class="gate-smoke gate-smoke-a" aria-hidden="true"></div>
-      <div class="gate-smoke gate-smoke-b" aria-hidden="true"></div>
-      <div class="gate-lights" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="gate-glow" aria-hidden="true"></div>
       <div class="gate-particles" id="gateParticles" aria-hidden="true"></div>
+      <div class="gate-frame" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
       <div class="gate-content">
-        <p class="gate-siren" aria-hidden="true">🚨</p>
-        <p class="gate-warning"><span>WARNING!</span> <span>WARNING!</span></p>
-        <p class="gate-title" id="gateTitle">GROOM &amp; BRIDE<br /><span>ONE LAST BASH!</span></p>
-        <div class="gate-later">
-          <p class="gate-last">LET'S GIVE THEM ONE LAST<br /><span>LEGENDARY NIGHT!</span></p>
-          <button class="gate-enter" id="enterParty" type="button">Enter the party <span aria-hidden="true">🥂</span></button>
+        <div class="gate-monogram" aria-hidden="true">
+          <svg viewBox="0 0 120 120"><circle class="ring-outer" cx="60" cy="60" r="57" pathLength="100" /><circle class="ring-inner" cx="60" cy="60" r="51" pathLength="100" /></svg>
+          <span>S<em>&amp;</em>A</span>
+        </div>
+        <p class="gate-warning"><span>Warning</span><b>✦</b><span>Warning</span></p>
+        <p class="gate-title" id="gateTitle">GROOM <em>&amp;</em> BRIDE<span>One Last Bash!</span></p>
+        <div class="gate-divider" aria-hidden="true"><span></span><b>◆</b><span></span></div>
+        <p class="gate-last">Let's give them one last <em>legendary night</em></p>
+        <p class="gate-meta">23 · 12 · 2026 <b>|</b> Avoki Resort, Kerala</p>
+        <div class="gate-actions">
+          <button class="gate-enter" id="enterParty" type="button"><span>Enter the party</span></button>
           <button class="gate-quiet" id="enterQuiet" type="button">Enter without sound</button>
         </div>
       </div>
+      <p class="gate-foot" aria-hidden="true">Shibu &amp; Abhisha · 2026</p>
     </div>
     <canvas class="confetti-canvas" id="confettiCanvas" aria-hidden="true"></canvas>
 
