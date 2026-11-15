@@ -9,22 +9,6 @@ if (musicSource) {
   audio.src = musicSource;
 }
 
-document.querySelector("#enterParty").addEventListener("click", async () => {
-  document.body.classList.add("entered");
-  document.body.classList.remove("locked");
-  window.setTimeout(() => document.querySelector("#home").focus({ preventScroll: true }), 900);
-  if (musicSource) {
-    try {
-      await audio.play();
-      soundToggle.setAttribute("aria-pressed", "true");
-      soundToggle.setAttribute("aria-label", "Turn music off");
-      soundLabel.textContent = "Sound on";
-    } catch (error) {
-      console.error("Could not start party music:", error);
-    }
-  }
-});
-
 soundToggle.addEventListener("click", async () => {
   if (!musicSource) {
     soundLabel.textContent = "Add music";
