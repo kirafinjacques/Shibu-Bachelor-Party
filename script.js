@@ -11,7 +11,7 @@ const PARTY = {
   // WhatsApp number that receives RSVPs, digits only with country code (e.g. "919876543210").
   // Leave empty to let each guest pick the chat to send to.
   whatsappNumber: "",
-  rsvpMessage: "I'm in for SA's Bachelor Party on 23.12.2026 (3PM–10PM) at Avoki Resort! 🥂🕺 Count me in for the legendary night!",
+  rsvpMessage: "I'm in for Shibu & Abhisha's (SA's) Bachelor Party on 23.12.2026 (3PM–10PM) at Avoki Resort! 🥂🕺 Count me in for the legendary night!",
   // Optional: path to your own MP3 (e.g. "assets/music/party.mp3"). Empty = built-in synthesized party beat.
   musicSource: "assets/music/bindaas.mp3",
 };
@@ -245,7 +245,7 @@ document.addEventListener("visibilitychange", () => {
 
 // Small click sound on buttons and links (only when sound is on).
 document.addEventListener("click", (event) => {
-  if (event.target.closest(".button, .battle-vote-button, .gallery-item, .lightbox-close, .menu-toggle, .hero-cta")) sound.click();
+  if (event.target.closest(".button, .battle-vote-button, .gallery-item, .lightbox-close, .menu-toggle")) sound.click();
 });
 
 /* ------------------------------- Confetti ------------------------------- */
@@ -514,7 +514,7 @@ window.setInterval(updateCountdown, 1000);
 const toCalStamp = (date) => date.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
 const eventStart = toCalStamp(partyDate);
 const eventEnd = toCalStamp(partyEndDate);
-const eventDescription = `Good friends. Bad ideas. Unforgettable memories! Directions: ${PARTY.mapsUrl}`;
+const eventDescription = `Celebrating Shibu & Abhisha. Good friends. Bad ideas. Unforgettable memories! Directions: ${PARTY.mapsUrl}`;
 const calendarEvent = [
   "BEGIN:VCALENDAR",
   "VERSION:2.0",
