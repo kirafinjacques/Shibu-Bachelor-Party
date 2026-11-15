@@ -19,8 +19,8 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,500;1,600&family=Great+Vibes&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=11" />
-    <script src="script.js?v=9" defer></script>
+    <link rel="stylesheet" href="styles.css?v=12" />
+    <script src="script.js?v=10" defer></script>
   </head>
   <body>
     <!-- INTRO: elegant full-screen gate. Audio only starts after a button here is pressed. -->
@@ -105,10 +105,11 @@
       </section>
 
       <section class="battle-section section-dark" id="battle">
-        <div class="section-topline"><span>THE ULTIMATE SHOWDOWN</span><span>BRIDE SQUAD VS GROOM SQUAD</span></div>
+        <div class="section-topline"><span>03 / THE ULTIMATE SHOWDOWN</span><span>BRIDE SQUAD VS GROOM SQUAD</span></div>
         <div class="battle-wrap">
+          <div class="battle-trophy" aria-hidden="true">🏆</div>
           <p class="eyebrow">Two teams. One battlefield. One trophy!</p>
-          <h2>THE ULTIMATE<br /><span>BATTLE PARTY!</span> <b aria-hidden="true">🏆</b></h2>
+          <h2 class="battle-title"><small>The Ultimate</small><span>BATTLE PARTY!</span></h2>
           <p class="battle-copy">The Bride Squad and Groom Squad are ready to battle it out in an epic showdown filled with exciting games, crazy challenges, laughter and unforgettable moments.</p>
           <p class="battle-question">Who will conquer the challenges?<br /><strong>And most importantly… who will take home the trophy?</strong></p>
           <form class="battle-poll" id="battlePoll">
@@ -138,7 +139,7 @@
       </section>
 
       <section class="quotes-section section-dark">
-        <div class="section-topline"><span>THE FRIENDSHIP CONTRACT</span><span>FINE PRINT APPLIES</span></div>
+        <div class="section-topline"><span>04 / THE FRIENDSHIP CONTRACT</span><span>FINE PRINT APPLIES</span></div>
         <p class="eyebrow reveal">A few words from the committee</p>
         <div class="quote-grid">
           <article class="quote-card reveal"><span class="quote-icon">💍</span><p>ONE LAST NIGHT<br /><b>BEFORE THE RING!</b></p><span class="quote-number">01</span></article>
@@ -150,7 +151,7 @@
       </section>
 
       <section class="details-section section-light" id="details">
-        <div class="section-topline"><span>03 / THE INTELLIGENCE</span><span>MEMORISE THIS</span></div>
+        <div class="section-topline"><span>05 / THE INTELLIGENCE</span><span>MEMORISE THIS</span></div>
         <div class="details-wrap">
           <div class="details-heading reveal">
             <p class="eyebrow">Clear your calendar. Cancel your excuses.</p>
@@ -182,7 +183,7 @@
       </section>
 
       <section class="rules-section section-dark">
-        <div class="section-topline"><span>04 / HOUSE RULES</span><span>READ. OBEY. PARTY.</span></div>
+        <div class="section-topline"><span>06 / HOUSE RULES</span><span>READ. OBEY. PARTY.</span></div>
         <div class="rules-heading reveal"><p class="eyebrow">Tap each rule to swear by it</p><h2>OFFICIAL BACHELOR PARTY<br /><span>RULES.</span></h2></div>
         <div class="rules-list">
           <article class="rule reveal" role="button" tabindex="0" aria-pressed="false"><span class="rule-num"><small>RULE</small>01</span><span class="rule-icon" aria-hidden="true">😐</span><p>No boring faces allowed.</p><span class="rule-check" aria-hidden="true">✓</span><span class="rule-stamp" aria-hidden="true">AGREED</span></article>
@@ -195,7 +196,7 @@
       </section>
 
       <section class="gallery-section section-light" id="memories">
-        <div class="section-topline"><span>05 / EXHIBIT A</span><span>THE USUAL SUSPECTS</span></div>
+        <div class="section-topline"><span>07 / EXHIBIT A</span><span>THE USUAL SUSPECTS</span></div>
         <div class="gallery-heading reveal">
           <div><p class="eyebrow">A highly selective archive</p><h2>GOOD TIMES.<br /><span>QUESTIONABLE PHOTOS.</span></h2></div>
           <p>Tap a photo for a closer look.<br />Actual evidence may be added later.</p>
@@ -277,7 +278,7 @@
       <img id="lightboxImage" src="" alt="" />
       <p id="lightboxCaption"></p>
     </dialog>
-    <!-- MUSIC: plays assets/music/bindaas.mp3 (set in PARTY.musicSource in script.js). Empty that value to use the built-in party beat. -->
+    <!-- MUSIC: plays assets/music/sms_bar_bgm.mp3 (set in PARTY.musicSource in script.js). Empty that value to use the built-in party beat. -->
     <audio id="partyMusic" loop preload="none" src=""></audio>
   </body>
 </html>

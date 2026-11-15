@@ -1174,3 +1174,21 @@ body.entered .gate-content { opacity: 0; transform: scale(1.05); filter: blur(6p
   .gate-content > *, .gate-foot, .gate-monogram circle, .gate-frame { animation-delay: 0s !important; }
 }
 .gate-content { width: min(880px, 100%); }
+
+/* ---------- v12: Battle Party title, alignment & type ---------- */
+.battle-section .section-topline { flex-direction: row; gap: 12px; }
+.battle-section .section-topline span:last-child { align-self: auto; text-align: right; }
+.battle-trophy { display: inline-grid; width: 64px; height: 64px; margin: 0 auto 18px; place-items: center; border: 1px solid #e6c77f66; border-radius: 50%; background: radial-gradient(circle, #f8c64b22, transparent 70%); font-size: 30px; box-shadow: 0 0 30px #f8c64b22; animation: trophyFloat 3s ease-in-out infinite; }
+.battle-wrap h2.battle-title { display: grid; gap: 10px; color: var(--gold); font-size: clamp(42px, 8vw, 78px); font-style: normal; font-weight: 800; letter-spacing: -.02em; line-height: 1; text-shadow: 0 0 40px #f8c64b26; }
+.battle-title small { color: #f5ecda; font-family: var(--body); font-size: clamp(11px, 1.6vw, 14px); font-weight: 700; letter-spacing: .42em; text-shadow: none; text-transform: uppercase; padding-left: .42em; }
+.battle-title span { color: var(--gold); font-style: normal; }
+.battle-copy { max-width: 620px; text-wrap: pretty; }
+.battle-question { font-size: clamp(17px, 2.4vw, 21px); text-wrap: balance; }
+.battle-question strong { display: block; max-width: 520px; margin: 8px auto 0; color: #f0c65d; font-family: var(--body); font-size: 11px; font-style: normal; font-weight: 700; letter-spacing: .16em; line-height: 1.8; text-transform: uppercase; text-wrap: balance; }
+.section-topline span { min-width: 0; }
+@keyframes trophyFloat { 50% { transform: translateY(-6px) rotate(-4deg); } }
+@media (max-width: 760px) {
+  .battle-wrap h2.battle-title { font-size: clamp(38px, 11vw, 56px); }
+  .battle-question strong { font-size: 9px; letter-spacing: .14em; }
+}
+.battle-wrap h2.battle-title span { color: var(--gold); font-style: normal; }
