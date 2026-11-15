@@ -27,7 +27,7 @@ jobs:
       - name: Prepare site files
         run: |
           mkdir _site
-          cp index.html styles.css script.js sa-landing-reference.png _site/
+          cp index.html styles.css script.js rsvp-config.js admin.html admin.css admin.js sa-landing-reference.png _site/
           # Optional folder for your own photos (assets/photos) and music (assets/music)
           if [ -d assets ]; then cp -R assets _site/; fi
       - name: Upload site files

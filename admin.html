@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#100b12" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="darkreader-lock" />
+    <title>Guest List | SA's Bachelor Party</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="admin.css?v=1" />
+    <script src="rsvp-config.js?v=1" defer></script>
+    <script src="admin.js?v=1" defer></script>
+  </head>
+  <body>
+    <!-- Passcode screen -->
+    <main class="login" id="login">
+      <form class="login-card" id="loginForm">
+        <span class="mark">S<em>&amp;</em>A</span>
+        <h1>Guest list</h1>
+        <p>Shibu &amp; Abhisha's Bachelor Party · admin</p>
+        <label><span>Passcode</span><input id="passcode" type="password" autocomplete="current-password" required /></label>
+        <button class="btn btn-gold" type="submit">Open dashboard</button>
+        <p class="error" id="loginError" role="alert"></p>
+      </form>
+    </main>
+
+    <!-- Dashboard -->
+    <div class="app" id="app" hidden>
+      <header class="topbar">
+        <div class="brand"><span class="mark">S<em>&amp;</em>A</span><div><b>Guest list</b><small id="updatedAt">—</small></div></div>
+        <div class="topbar-actions">
+          <button class="btn btn-ghost" id="refresh" type="button">↻ Refresh</button>
+          <button class="btn btn-ghost" id="logout" type="button">Lock</button>
+        </div>
+      </header>
+
+      <main class="wrap">
+        <section class="stats" aria-label="Summary">
+          <article class="stat stat-hero"><small>Attending headcount</small><b id="sHeadcount">0</b><span id="sAttendingGuests">0 RSVPs</span></article>
+          <article class="stat"><small>Invited</small><b id="sInvited">0</b></article>
+          <article class="stat"><small>Responded</small><b id="sResponded">0</b></article>
+          <article class="stat"><small>Pending</small><b id="sPending">0</b></article>
+          <article class="stat"><small>Declined</small><b id="sDeclined">0</b></article>
+        </section>
+
+        <section class="card sides" aria-label="Bride and groom side">
+          <div class="sides-head"><span>🤵 Groom's side <b id="sGroom">0</b></span><span><b id="sBride">0</b> Bride's side 👰</span></div>
+          <div class="split" aria-hidden="true"><i id="barGroom"></i><i id="barBride"></i></div>
+          <p class="sides-note">Headcount of people attending, by side</p>
+        </section>
+
+        <section class="card invite" aria-labelledby="inviteTitle">
+          <h2 id="inviteTitle">Send an invite</h2>
+          <form class="invite-form" id="inviteForm">
+            <label class="f-name"><span>Guest name</span><input id="iName" maxlength="60" placeholder="e.g. Rahul" required /></label>
+            <label class="f-side"><span>Side</span>
+              <select id="iSide"><option value="Groom">Groom</option><option value="Bride">Bride</option></select>
+            </label>
+            <label class="f-phone"><span>WhatsApp no.</span><input id="iPhone" type="tel" inputmode="tel" maxlength="20" placeholder="Optional" /></label>
+            <button class="btn btn-gold f-go" type="submit" id="iSubmit">Create invite</button>
+          </form>
+          <p class="error" id="inviteError" role="alert"></p>
+          <div class="share" id="share" hidden>
+            <p>Invite ready for <b id="shareName"></b></p>
+            <input id="shareLink" readonly aria-label="Personal invite link" />
+            <div class="share-actions">
+              <a class="btn btn-wa" id="shareWa" href="#" target="_blank" rel="noreferrer">Send on WhatsApp</a>
+              <button class="btn btn-ghost" id="shareCopy" type="button">Copy link</button>
+              <button class="btn btn-ghost" id="shareNative" type="button" hidden>Share…</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="card guests" aria-labelledby="guestsTitle">
+          <div class="guests-head">
+            <h2 id="guestsTitle">Guests <small id="guestCount"></small></h2>
+            <button class="btn btn-ghost" id="exportCsv" type="button">Export CSV</button>
+          </div>
+          <div class="filters">
+            <input id="search" type="search" placeholder="Search name or phone" aria-label="Search guests" />
+            <select id="fSide" aria-label="Filter by side"><option value="">All sides</option><option>Groom</option><option>Bride</option></select>
+            <select id="fStatus" aria-label="Filter by status"><option value="">All statuses</option><option>Attending</option><option>Declined</option><option>Pending</option></select>
+          </div>
+          <ul class="guest-list" id="guestList"></ul>
+          <p class="empty" id="empty" hidden>No guests match.</p>
+        </section>
+      </main>
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    </div>
+  </body>
+</html>

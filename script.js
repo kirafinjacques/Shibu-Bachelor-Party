@@ -544,15 +544,116 @@ const googleCalendarParams = new URLSearchParams({
 document.querySelector("#googleCalendarLink").href = `https://calendar.google.com/calendar/render?${googleCalendarParams}`;
 document.querySelector("#mapsLink").href = PARTY.mapsUrl;
 
-const rsvpButton = document.querySelector("#rsvpButton");
-rsvpButton.href = PARTY.whatsappNumber
-  ? `https://wa.me/${PARTY.whatsappNumber}?text=${encodeURIComponent(PARTY.rsvpMessage)}`
-  : `https://api.whatsapp.com/send?text=${encodeURIComponent(PARTY.rsvpMessage)}`;
-rsvpButton.addEventListener("click", () => {
-  sound.pop();
-  const rect = rsvpButton.getBoundingClientRect();
-  confetti(rect.left + rect.width / 2, rect.top, 120);
+/* --------------------------- Personal invite + RSVP --------------------------- */
+// Personal links look like  index.html?to=Rahul&i=<inviteId>&s=Groom  (made on admin.html).
+const params = new URLSearchParams(location.search);
+const guest = {
+  name: (params.get("to") || "").replace(/\s+/g, " ").trim().slice(0, 40),
+  inviteId: (params.get("i") || "").replace(/[^a-zA-Z0-9]/g, "").slice(0, 16),
+  side: ["Groom", "Bride"].includes(params.get("s")) ? params.get("s") : "",
+};
+if (guest.name) {
+  const gateDear = document.querySelector("#gateDear");
+  gateDear.textContent = `Dear ${guest.name},`;
+  gateDear.hidden = false;
+  document.querySelector("#inviteDear").textContent = `Dear ${guest.name},`;
+  document.querySelector("#rsvpHello").textContent = `${guest.name}, will you join the madness?`;
+}
+
+const rsvpForm = document.querySelector("#rsvpForm");
+const rsvpDone = document.querySelector("#rsvpDone");
+const rsvpError = document.querySelector("#rsvpError");
+const rsvpSubmit = document.querySelector("#rsvpSubmit");
+const peopleField = document.querySelector("#rsvpPeopleField");
+const RSVP_STORE = `sa-rsvp-${guest.inviteId || "open"}`;
+
+const storage = {
+  get() { try { return JSON.parse(localStorage.getItem(RSVP_STORE)); } catch { return null; } },
+  set(value) { try { localStorage.setItem(RSVP_STORE, JSON.stringify(value)); } catch { /* private mode */ } },
+};
+
+const fillForm = (data) => {
+  rsvpForm.elements.name.value = data.name || "";
+  if (["Yes", "No"].includes(data.attending)) rsvpForm.elements.attending.value = data.attending;
+  if (["Groom", "Bride"].includes(data.side)) rsvpForm.elements.side.value = data.side;
+  if (data.people) rsvpForm.elements.people.value = String(data.people);
+  if (data.phone) rsvpForm.elements.phone.value = data.phone;
+};
+const syncPeople = () => { peopleField.hidden = rsvpForm.elements.attending.value === "No"; };
+rsvpForm.addEventListener("change", syncPeople);
+
+const whatsappText = (r) => r.attending === "Yes"
+  ? `Hi! ${r.name} here (${r.side}'s side) 🥂 ${PARTY.rsvpMessage}${r.people > 1 ? ` We're ${r.people} people.` : ""}`
+  : `Hi! ${r.name} here (${r.side}'s side). So sorry, I can't make it to Shibu & Abhisha's Bachelor Party on 23.12.2026 — have a legendary night! 🥂`;
+
+const showDone = (r) => {
+  const yes = r.attending === "Yes";
+  document.querySelector("#rsvpDoneTitle").textContent = yes ? `You're in, ${r.name}! ✓` : `We'll miss you, ${r.name}!`;
+  document.querySelector("#rsvpDoneSub").textContent = yes
+    ? `${r.people} ${r.people > 1 ? "people" : "person"} · ${r.side}'s side · See you on 23.12.2026`
+    : "Thanks for letting us know. You can change your response any time.";
+  const text = encodeURIComponent(whatsappText(r));
+  document.querySelector("#rsvpWhatsApp").href = PARTY.whatsappNumber
+    ? `https://wa.me/${PARTY.whatsappNumber}?text=${text}`
+    : `https://api.whatsapp.com/send?text=${text}`;
+  rsvpForm.hidden = true;
+  rsvpDone.hidden = false;
+};
+
+document.querySelector("#rsvpChange").addEventListener("click", () => {
+  rsvpDone.hidden = true;
+  rsvpForm.hidden = false;
+  rsvpForm.elements.name.focus();
 });
+
+rsvpForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const f = rsvpForm.elements;
+  const r = {
+    name: f.name.value.replace(/\s+/g, " ").trim(),
+    attending: f.attending.value,
+    side: f.side.value,
+    people: f.attending.value === "Yes" ? Number(f.people.value) : 0,
+    phone: f.phone.value.trim(),
+    inviteId: guest.inviteId,
+  };
+  if (!r.name) { rsvpError.textContent = "Please tell us your name."; f.name.focus(); return; }
+  if (!r.side) { rsvpError.textContent = "Please pick the Bride's or the Groom's side."; return; }
+  rsvpError.textContent = "";
+
+  if (window.RSVP_API_URL) {
+    rsvpSubmit.disabled = true;
+    rsvpSubmit.firstChild.textContent = "Sending… ";
+    try {
+      const res = await fetch(window.RSVP_API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({ action: "rsvp", ...r, website: f.website.value }),
+      });
+      const data = await res.json();
+      if (!data.ok) throw new Error(data.error || "Could not save");
+    } catch (err) {
+      rsvpError.textContent = "Couldn't send your RSVP — check your connection and try again, or reply on WhatsApp.";
+      return;
+    } finally {
+      rsvpSubmit.disabled = false;
+      rsvpSubmit.firstChild.textContent = "Send my RSVP ";
+    }
+  }
+
+  storage.set(r);
+  showDone(r);
+  if (r.attending === "Yes") {
+    sound.pop();
+    const rect = rsvpDone.getBoundingClientRect();
+    confetti(rect.left + rect.width / 2, rect.top + 30, 150);
+  }
+});
+
+const savedRsvp = storage.get();
+fillForm(savedRsvp || { name: guest.name, side: guest.side });
+syncPeople();
+if (savedRsvp) showDone(savedRsvp);
 
 /* -------------------------------- Lightbox ------------------------------ */
 const lightbox = document.querySelector("#lightbox");

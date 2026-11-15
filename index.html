@@ -14,7 +14,9 @@
     />
     <meta property="og:title" content="SA's Bachelor Party – Last Night of Freedom!" />
     <meta property="og:description" content="Celebrating Shibu &amp; Abhisha. Good friends. Bad ideas. Unforgettable memories. 23.12.2026 · 3PM–10PM · Avoki Resort, Kerala." />
-    <meta property="og:image" content="sa-landing-reference.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kirafinjacques.github.io/Shibu-Bachelor-Party/" />
+    <meta property="og:image" content="https://kirafinjacques.github.io/Shibu-Bachelor-Party/assets/og-image.jpg" />
     <title>SA's Bachelor Party | Last Night of Freedom</title>
     <script>document.documentElement.classList.add("js");</script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -23,8 +25,9 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,500;1,600&family=Great+Vibes&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=16" />
-    <script src="script.js?v=11" defer></script>
+    <link rel="stylesheet" href="styles.css?v=17" />
+    <script src="rsvp-config.js?v=1" defer></script>
+    <script src="script.js?v=12" defer></script>
   </head>
   <body>
     <!-- INTRO: elegant full-screen gate. Audio only starts after a button here is pressed. -->
@@ -37,6 +40,7 @@
           <svg viewBox="0 0 120 120"><circle class="ring-outer" cx="60" cy="60" r="57" pathLength="100" /><circle class="ring-inner" cx="60" cy="60" r="51" pathLength="100" /></svg>
           <span>S<em>&amp;</em>A</span>
         </div>
+        <p class="gate-dear" id="gateDear" hidden></p>
         <p class="gate-warning"><span>Warning</span><b>✦</b><span>Warning</span></p>
         <p class="gate-title" id="gateTitle">GROOM <em>&amp;</em> BRIDE<span>One Last Bash!</span></p>
         <div class="gate-divider" aria-hidden="true"><span></span><b>◆</b><span></span></div>
@@ -99,7 +103,7 @@
           <p class="eyebrow">By order of the friendship committee</p>
           <h2>YOU ARE<br /><span>OFFICIALLY INVITED!</span></h2>
           <div class="invite-divider"><span>✦</span></div>
-          <p class="invite-dear">Dear Partners in Crime,</p>
+          <p class="invite-dear" id="inviteDear">Dear Partners in Crime,</p>
           <p class="invite-message">The time has come to celebrate our very own <strong>Shibu</strong> &amp; <strong>Abhisha</strong> before they officially trade their single lives for married life!</p>
           <p class="invite-message">Before the responsibilities, family functions, shopping lists and <em>“Where are you?”</em> phone calls begin...</p>
           <p class="invite-message">Let's gather for one unforgettable night of madness, laughter, friendship and crazy memories!</p>
@@ -256,7 +260,35 @@
           <div class="finale-bottle" aria-hidden="true"><span class="bottle">🍾</span><span class="spray"><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
           <h2>LET'S MAKE<br /><span>THIS NIGHT</span><br />LEGENDARY!</h2>
           <p class="finale-sub">ONE GROOM. ONE BRIDE. ONE LAST NIGHT OF FREEDOM.<br />A MILLION MEMORIES.</p>
-          <a class="button button-gold rsvp-button" id="rsvpButton" href="https://api.whatsapp.com/send?text=I'm%20in%20for%20SA's%20Bachelor%20Party%20on%2023%20December%202026!%20See%20you%20at%20Avoki%20Resort." target="_blank" rel="noreferrer">I'm in — RSVP on WhatsApp <span aria-hidden="true">↗</span></a>
+          <form class="rsvp-form" id="rsvpForm" novalidate>
+            <p class="rsvp-hello" id="rsvpHello">Will you join the madness?</p>
+            <label class="rsvp-field"><span>Your name</span><input id="rsvpName" name="name" type="text" autocomplete="name" maxlength="60" required /></label>
+            <fieldset class="rsvp-choice">
+              <legend>Are you coming?</legend>
+              <label><input type="radio" name="attending" value="Yes" checked /><span>🥂 Count me in</span></label>
+              <label><input type="radio" name="attending" value="No" /><span>😢 Can't make it</span></label>
+            </fieldset>
+            <fieldset class="rsvp-choice">
+              <legend>You're from</legend>
+              <label><input type="radio" name="side" value="Groom" /><span>Groom's side</span></label>
+              <label><input type="radio" name="side" value="Bride" /><span>Bride's side</span></label>
+            </fieldset>
+            <div class="rsvp-row">
+              <label class="rsvp-field" id="rsvpPeopleField"><span>No. of people</span>
+                <select name="people"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+              </label>
+              <label class="rsvp-field"><span>WhatsApp no. <i>(optional)</i></span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="20" /></label>
+            </div>
+            <input class="rsvp-hp" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <button class="button button-gold rsvp-button" id="rsvpSubmit" type="submit">Send my RSVP <span aria-hidden="true">✦</span></button>
+            <p class="rsvp-error" id="rsvpError" role="alert"></p>
+          </form>
+          <div class="rsvp-done" id="rsvpDone" hidden>
+            <p class="rsvp-done-title" id="rsvpDoneTitle"></p>
+            <p class="rsvp-done-sub" id="rsvpDoneSub"></p>
+            <a class="button button-gold rsvp-wa" id="rsvpWhatsApp" href="#" target="_blank" rel="noreferrer">Also tell the host on WhatsApp <span aria-hidden="true">↗</span></a>
+            <button class="rsvp-change" id="rsvpChange" type="button">Change my response</button>
+          </div>
           <p class="see-you">SEE YOU AT THE PARTY!</p>
           <p class="finale-names">SHIBU &amp; ABHISHA</p>
           <p class="finale-signature">SA’S BACHELOR PARTY <span>—</span> 2026</p>

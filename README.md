@@ -29,6 +29,28 @@ If you change the date, also update the date and time shown in `index.html`, inc
 
 After editing CSS or JS, increase the `?v=` number on `styles.css` and `script.js` in `index.html` so phones don't keep an old cached copy.
 
+## RSVP & admin dashboard
+
+Guests RSVP on the invitation itself (attending yes/no, Bride or Groom side, number of people, optional WhatsApp number). Responses are saved to a Google Sheet that you own. The private dashboard at `admin.html` shows counts and the guest list, and creates personal invites.
+
+**Personal invites.** On `admin.html`, type a guest's name, pick their side, add their WhatsApp number (optional), and press **Create invite**. You get a link like `…/?to=Rahul&i=ab12cd34ef&s=Groom`. It greets the guest by name and prefills their RSVP. Send it with **Send on WhatsApp**, **Copy link** or **Share…**. If someone forwards the plain site link, their RSVP still appears, marked **Walk-in**.
+
+### One-time Google setup (about 5 minutes)
+
+1. Create a new Google Sheet in your own Google account.
+2. Open **Extensions → Apps Script**. Delete the sample code and paste in the whole of [`apps-script/Code.gs`](apps-script/Code.gs). Save.
+3. Choose `setup` in the function dropdown and press **Run**. Approve the permissions. This creates the `Invites` and `RSVPs` tabs.
+4. Open **Project Settings** (the gear icon) → **Script Properties** → **Add property**. Set the name to `ADMIN_KEY` and the value to a passcode only you know. This is the dashboard password.
+5. Choose **Deploy → New deployment**, then the gear icon → **Web app**. Set **Execute as: Me** and **Who has access: Anyone**. Press **Deploy** and copy the **Web app URL** (it ends in `/exec`).
+6. Paste that URL into [`rsvp-config.js`](rsvp-config.js) as `window.RSVP_API_URL = "https://script.google.com/macros/s/…/exec";`. Commit and push.
+7. Open `https://kirafinjacques.github.io/Shibu-Bachelor-Party/admin.html` and enter your passcode.
+
+If you change `Code.gs` later, go to **Deploy → Manage deployments → Edit**, choose **Version: New version** and deploy. The URL stays the same.
+
+**Before setup:** until `RSVP_API_URL` is set, the form doesn't save anything. Guests still see a thank-you screen and can reply on WhatsApp.
+
+**Privacy:** the passcode protects the dashboard, and the data stays in your Sheet. `admin.html` isn't linked from the invitation and asks search engines not to index it. Don't share the passcode.
+
 ## Local preview
 
 ```sh

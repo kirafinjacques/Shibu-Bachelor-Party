@@ -1232,3 +1232,53 @@ body.entered .gate-content { opacity: 0; transform: scale(1.05); filter: blur(6p
 .site-header .menu-toggle span { height: 0; border-top: 1.5px solid var(--white); background: none; }
 /* Install progress bar fill as a border so it survives recolouring. */
 .install-bar b { height: 0; border-top: 6px solid var(--gold); background: none; }
+
+/* ===================== v17 — personal greeting + RSVP form ===================== */
+.gate-dear { margin: 0 0 10px; color: var(--champ); font-family: "Great Vibes", cursive; font-size: clamp(30px, 8vw, 44px); line-height: 1.1; text-shadow: 0 0 24px #e6c77f40; animation: gateRise 1s .1s both; }
+@keyframes gateRise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+.rsvp-form, .rsvp-done {
+  --champ: #e6c77f;
+  width: min(520px, 100%); margin: 0 auto; padding: 24px 22px 20px; text-align: left;
+  background: linear-gradient(160deg, #1d1522f0, #120c15f0); border: 1px solid #e6c77f40; border-radius: 20px;
+  box-shadow: 0 24px 60px #0008, inset 0 1px 0 #ffffff10;
+}
+.rsvp-form[hidden], .rsvp-done[hidden], .rsvp-field[hidden] { display: none; }
+.rsvp-hello { margin: 0 0 18px; color: var(--champ); font-family: var(--display); font-size: 21px; font-style: italic; font-weight: 600; text-align: center; }
+.rsvp-field { display: grid; gap: 7px; margin-bottom: 16px; }
+.rsvp-field > span, .rsvp-choice legend { color: #cdbfd0; font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.rsvp-field i { color: #8f8494; font-style: normal; letter-spacing: .04em; text-transform: none; }
+.rsvp-field input, .rsvp-field select {
+  width: 100%; min-height: 48px; padding: 0 14px; color: var(--white); background: #0c080e; border: 1px solid #ffffff26; border-radius: 12px;
+  font: 500 16px var(--body); color-scheme: dark; outline: none; transition: border-color .2s, box-shadow .2s;
+}
+.rsvp-field select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--champ) 50%), linear-gradient(135deg, var(--champ) 50%, transparent 50%); background-position: calc(100% - 20px) 50%, calc(100% - 14px) 50%; background-size: 6px 6px; background-repeat: no-repeat; }
+.rsvp-field input:focus, .rsvp-field select:focus { border-color: var(--champ); box-shadow: 0 0 0 3px #e6c77f2e; }
+.rsvp-choice { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 0 0 16px; padding: 0; border: 0; }
+.rsvp-choice legend { grid-column: 1 / -1; margin-bottom: 7px; padding: 0; }
+.rsvp-choice label { position: relative; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.rsvp-choice input { position: absolute; opacity: 0; pointer-events: none; }
+.rsvp-choice span {
+  display: grid; place-items: center; min-height: 48px; padding: 8px 10px; color: #e9e0ea; background: #0c080e; border: 1px solid #ffffff26; border-radius: 12px;
+  font-size: 14px; font-weight: 700; text-align: center; transition: background .2s, border-color .2s, color .2s, transform .15s;
+}
+.rsvp-choice label:active span { transform: scale(.97); }
+.rsvp-choice input:checked + span { color: #160f10; background: linear-gradient(135deg, var(--gold-light), var(--champ)); border-color: transparent; box-shadow: 0 6px 20px #f8c64b33; }
+.rsvp-choice input:focus-visible + span { outline: 2px solid var(--champ); outline-offset: 2px; }
+.rsvp-row { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 12px; }
+.rsvp-row .rsvp-field[hidden] + .rsvp-field { grid-column: 1 / -1; }
+.rsvp-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.rsvp-form .rsvp-button, .rsvp-done .rsvp-wa { width: 100%; justify-content: center; min-height: 52px; border-radius: 12px; cursor: pointer; font-size: 13px; }
+.rsvp-form .rsvp-button:disabled { opacity: .7; cursor: progress; }
+.rsvp-error { min-height: 1em; margin: 10px 0 0; color: #ff9a9a; font-size: 13px; font-weight: 600; text-align: center; }
+.rsvp-error:empty { margin: 0; min-height: 0; }
+.rsvp-done { text-align: center; animation: gateRise .6s both; }
+.rsvp-done-title { margin: 0 0 6px; color: var(--champ); font-family: var(--display); font-size: 26px; font-weight: 700; }
+.rsvp-done-sub { margin: 0 0 20px; color: #d7cbd9; font-size: 14px; line-height: 1.5; }
+.rsvp-change { margin-top: 12px; padding: 8px; color: #cdbfd0; background: none; border: 0; font-size: 13px; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+@media (max-width: 640px) {
+  .rsvp-form, .rsvp-done { padding: 20px 16px 16px; border-radius: 18px; }
+  .rsvp-hello { font-size: 19px; }
+  .rsvp-choice span { font-size: 13px; }
+  .rsvp-form .rsvp-button, .rsvp-done .rsvp-wa { font-size: 12px; }
+}
