@@ -6,19 +6,43 @@
     <meta name="theme-color" content="#100b12" />
     <meta
       name="description"
-      content="Join SA for a legendary groom and bride bachelor party."
+      content="WARNING! The groom is losing his freedom. You're invited to SA's Bachelor Party, 23.12.2026 at Avoki Resort, Kerala."
     />
-    <title>SA | Groom &amp; Bride Bachelor Party</title>
+    <meta property="og:title" content="SA's Bachelor Party – Last Night of Freedom!" />
+    <meta property="og:description" content="Good friends. Bad ideas. Unforgettable memories. 23.12.2026 · 3PM–10PM · Avoki Resort, Kerala." />
+    <meta property="og:image" content="sa-landing-reference.png" />
+    <title>SA's Bachelor Party | Last Night of Freedom</title>
+    <script>document.documentElement.classList.add("js");</script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=7" />
-    <script src="script.js?v=4" defer></script>
+    <link rel="stylesheet" href="styles.css?v=9" />
+    <script src="script.js?v=6" defer></script>
   </head>
   <body>
+    <!-- INTRO: dramatic full-screen warning gate. Audio only starts after a button here is pressed. -->
+    <div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gateTitle">
+      <div class="gate-smoke gate-smoke-a" aria-hidden="true"></div>
+      <div class="gate-smoke gate-smoke-b" aria-hidden="true"></div>
+      <div class="gate-lights" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="gate-particles" id="gateParticles" aria-hidden="true"></div>
+      <div class="gate-content">
+        <p class="gate-siren" aria-hidden="true">🚨</p>
+        <p class="gate-warning"><span>WARNING!</span> <span>WARNING!</span></p>
+        <p class="gate-title" id="gateTitle">THE GROOM IS<br /><span>LOSING HIS FREEDOM!</span></p>
+        <div class="gate-later">
+          <p class="gate-before">BEFORE HE BECOMES A HUSBAND...</p>
+          <p class="gate-last">LET'S GIVE HIM ONE LAST<br /><span>LEGENDARY NIGHT!</span></p>
+          <button class="gate-enter" id="enterParty" type="button">Enter the party <span aria-hidden="true">🥂</span></button>
+          <button class="gate-quiet" id="enterQuiet" type="button">Enter without sound</button>
+        </div>
+      </div>
+    </div>
+    <canvas class="confetti-canvas" id="confettiCanvas" aria-hidden="true"></canvas>
+
     <header class="site-header">
       <a class="brand" href="#home" aria-label="SA's party home">
         <span class="brand-mark">SA</span>
@@ -60,20 +84,24 @@
           <p class="hero-copy">One unforgettable night with friends before the big day.</p>
         </div>
         <a class="hero-cta" href="#invite" aria-label="Show me the evidence">Show me the evidence</a>
-        <a class="scroll-hint" href="#reveal" aria-label="Scroll to celebrate the couple">Scroll to celebrate the couple</a>
+        <a class="scroll-hint" href="#reveal" aria-label="Scroll to meet the groom">Scroll to meet the groom</a>
       </section>
 
       <section class="groom-section section-dark" id="reveal">
-        <div class="section-topline"><span>01 / THE CELEBRATED COUPLE</span><span>EST. LEGENDARY</span></div>
+        <div class="section-topline"><span>01 / THE MAN OF THE HOUR</span><span>EST. LEGENDARY</span></div>
+        <div class="groom-spotlight" aria-hidden="true"></div>
         <div class="groom-intro reveal">
-          <p class="eyebrow">Celebrating the groom and bride before the big day</p>
-          <div class="champagne" aria-hidden="true">🍾</div>
-          <h2 class="groom-name">SA</h2>
-          <p class="groom-tagline">THE GROOM. THE BRIDE. THE MAIN EVENT.</p>
+          <p class="eyebrow">Ladies &amp; gentlemen, presenting...</p>
+          <div class="groom-stage">
+            <span class="prop-shades" aria-hidden="true">🕶️</span>
+            <h2 class="groom-name" data-text="SA">SA</h2>
+            <span class="prop-glass" aria-hidden="true">🥂</span>
+          </div>
+          <p class="groom-tagline">THE LEGEND. THE GROOM. THE FUTURE HUSBAND.</p>
           <div class="status-row">
-            <span class="status-pill"><i>●</i> Celebration mode: ON</span>
-            <span class="status-pill"><i>⌛</i> Countdown to forever: ticking</span>
-            <span class="status-pill"><i>↻</i> Wedding update: loading...</span>
+            <span class="status-pill"><i>●</i> Currently available for one last night!</span>
+            <span class="status-pill status-alert"><i>⚠</i> Freedom status: EXPIRING SOON!</span>
+            <span class="status-pill"><i>↻</i> Marriage update: Installation pending... <b class="install-bar" aria-hidden="true"><b></b></b></span>
           </div>
         </div>
       </section>
@@ -86,9 +114,10 @@
           <h2>YOU ARE<br /><span>OFFICIALLY INVITED!</span></h2>
           <div class="invite-divider"><span>✦</span></div>
           <p class="invite-dear">Dear Partners in Crime,</p>
-          <p class="invite-message">The time has come to celebrate SA—the groom and bride—as they begin married life!</p>
-          <p class="invite-message">Before the responsibilities, family functions, shopping lists and <em>“Where are you?”</em> phone calls begin... let's gather for one unforgettable night of madness, laughter, friendship and crazy memories!</p>
-          <p class="invite-slogan">GOOD FRIENDS. BAD IDEAS.<br /><span>UNFORGETTABLE MEMORIES.</span></p>
+          <p class="invite-message">The time has come to celebrate our brother <strong>Shibu</strong> before he officially trades his bachelor life for married life!</p>
+          <p class="invite-message">Before the responsibilities, family functions, shopping lists and <em>“Where are you?”</em> phone calls begin...</p>
+          <p class="invite-message">Let's gather for one unforgettable night of madness, laughter, friendship and crazy memories!</p>
+          <p class="invite-slogan">GOOD FRIENDS. BAD IDEAS.<br /><span>UNFORGETTABLE MEMORIES!</span></p>
           <div class="card-corner corner-bl">✳</div><div class="card-corner corner-br">✳</div>
         </div>
       </section>
@@ -131,10 +160,10 @@
         <p class="eyebrow reveal">A few words from the committee</p>
         <div class="quote-grid">
           <article class="quote-card reveal"><span class="quote-icon">💍</span><p>ONE LAST NIGHT<br /><b>BEFORE THE RING!</b></p><span class="quote-number">01</span></article>
-          <article class="quote-card quote-purple reveal"><span class="quote-icon">🕺</span><p>NO RULES.<br /><b>JUST FRIENDS!</b></p><span class="quote-number">02</span></article>
+          <article class="quote-card quote-purple reveal"><span class="quote-icon">🕺</span><p>NO WIFE. NO RULES.<br /><b>JUST FRIENDS!</b></p><span class="quote-number">02</span></article>
           <article class="quote-card reveal"><span class="quote-icon">🍻</span><p>TONIGHT'S PLAN:<br /><b>EAT, DRINK, DANCE & REPEAT!</b></p><span class="quote-number">03</span></article>
-          <article class="quote-card quote-burgundy reveal"><span class="quote-icon">⏳</span><p>THE BIG DAY<br /><b>IS ALMOST HERE!</b></p><span class="quote-number">04</span></article>
-          <article class="quote-card reveal"><span class="quote-icon">🤝</span><p>FRIENDS DON'T LET FRIENDS<br /><b>GET MARRIED WITHOUT A SEND-OFF!</b></p><span class="quote-number">05</span></article>
+          <article class="quote-card quote-burgundy reveal"><span class="quote-icon">⏳</span><p>THE GROOM'S FREEDOM<br /><b>IS ABOUT TO EXPIRE!</b></p><span class="quote-number">04</span></article>
+          <article class="quote-card reveal"><span class="quote-icon">🤝</span><p>FRIENDS DON'T LET FRIENDS<br /><b>GET MARRIED WITHOUT A PROPER SEND-OFF!</b></p><span class="quote-number">05</span></article>
         </div>
       </section>
 
@@ -143,18 +172,27 @@
         <div class="details-wrap">
           <div class="details-heading reveal">
             <p class="eyebrow">Clear your calendar. Cancel your excuses.</p>
-            <h2>THE PARTY<br /><span>BRIEFING.</span></h2>
+            <h2>BACHELOR PARTY<br /><span>DETAILS.</span></h2>
             <p>One location. One legendary celebration. Absolutely no early exits.</p>
             <div class="detail-doodle">✳</div>
           </div>
           <div class="details-card reveal">
             <div class="details-card-header"><span>OFFICIAL PARTY DETAILS</span><span class="detail-live"><i></i> CONFIRMED</span></div>
-            <div class="detail-row"><span class="detail-icon">▦</span><div><small>THE DATE</small><strong>23 December 2026</strong><span>Wednesday · mark it in gold</span></div></div>
-            <div class="detail-row"><span class="detail-icon">◷</span><div><small>THE TIME</small><strong>3:00 PM–10:00 PM IST</strong><span>Fashionably on time, please</span></div></div>
-            <div class="detail-row"><span class="detail-icon">⌖</span><div><small>THE LOCATION</small><strong>AVOKI RESORT, Kerala</strong><span>All roads lead to a good story</span></div></div>
+            <div class="detail-row"><span class="detail-icon icon-cal" aria-hidden="true"><b>DEC</b><i>23</i></span><div><small>THE DATE</small><strong>23.12.2026</strong><span>Wednesday · mark it in gold</span></div></div>
+            <div class="detail-row"><span class="detail-icon icon-clock" aria-hidden="true"><i class="hand-h"></i><i class="hand-m"></i></span><div><small>THE TIME</small><strong>3PM to 10PM</strong><span>Fashionably on time, please</span></div></div>
+            <div class="detail-row"><span class="detail-icon icon-pin" aria-hidden="true">📍</span><div><small>THE VENUE</small><strong>AVOKI RESORT, Kerala</strong><span>Kinfra Film &amp; Video Park, Kazhakkoottam, Thiruvananthapuram</span></div></div>
+            <div class="detail-map">
+              <iframe
+                src="https://maps.google.com/maps?q=Avoki+Hotels+and+Resorts,+Kinfra+Film+And+Video+Park,+Kazhakkoottam,+Thiruvananthapuram,+Kerala&z=15&output=embed"
+                title="Map showing Avoki Resort, Kerala"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
             <div class="detail-actions">
               <a class="button button-dark" id="calendarLink" href="#">Add to calendar <span aria-hidden="true">↗</span></a>
-              <a class="button button-outline" href="https://maps.app.goo.gl/52Z1EmgSsetAxCZb6?g_st=iw" target="_blank" rel="noreferrer">Get directions <span aria-hidden="true">↗</span></a>
+              <a class="button button-outline" id="googleCalendarLink" href="#" target="_blank" rel="noreferrer">Google Calendar <span aria-hidden="true">↗</span></a>
+              <a class="button button-outline" id="mapsLink" href="https://maps.app.goo.gl/52Z1EmgSsetAxCZb6?g_st=iw" target="_blank" rel="noreferrer">Google Maps directions <span aria-hidden="true">↗</span></a>
             </div>
             <p class="details-footnote">P.S. Bring your best dance moves. Or your most convincing excuse.</p>
           </div>
@@ -163,14 +201,15 @@
 
       <section class="rules-section section-dark">
         <div class="section-topline"><span>04 / HOUSE RULES</span><span>READ. OBEY. PARTY.</span></div>
-        <div class="rules-heading reveal"><p class="eyebrow">Terms & conditions of questionable behaviour</p><h2>OFFICIAL PRE-WEDDING<br /><span>PARTY RULES.</span></h2></div>
+        <div class="rules-heading reveal"><p class="eyebrow">Tap each rule to swear by it</p><h2>OFFICIAL BACHELOR PARTY<br /><span>RULES.</span></h2></div>
         <div class="rules-list">
-          <article class="rule reveal"><span class="rule-num">01</span><span class="rule-icon">😐</span><p>No boring faces allowed.</p><span class="rule-check">✓</span></article>
-          <article class="rule reveal"><span class="rule-num">02</span><span class="rule-icon">🪩</span><p>Dancing skills are optional. Confidence is compulsory.</p><span class="rule-check">✓</span></article>
-          <article class="rule reveal"><span class="rule-num">03</span><span class="rule-icon">📸</span><p>Memories must be made. Evidence is encouraged.</p><span class="rule-check">✓</span></article>
-          <article class="rule reveal"><span class="rule-num">04</span><span class="rule-icon">👑</span><p>The groom and bride must enjoy every second. It's in the contract.</p><span class="rule-check">✓</span></article>
-          <article class="rule reveal"><span class="rule-num">05</span><span class="rule-icon">🤫</span><p>What happens at the party becomes legendary!</p><span class="rule-check">✓</span></article>
+          <article class="rule reveal" role="button" tabindex="0" aria-pressed="false"><span class="rule-num"><small>RULE</small>01</span><span class="rule-icon" aria-hidden="true">😐</span><p>No boring faces allowed.</p><span class="rule-check" aria-hidden="true">✓</span><span class="rule-stamp" aria-hidden="true">AGREED</span></article>
+          <article class="rule reveal" role="button" tabindex="0" aria-pressed="false"><span class="rule-num"><small>RULE</small>02</span><span class="rule-icon" aria-hidden="true">🪩</span><p>Dancing skills are optional. Confidence is compulsory.</p><span class="rule-check" aria-hidden="true">✓</span><span class="rule-stamp" aria-hidden="true">AGREED</span></article>
+          <article class="rule reveal" role="button" tabindex="0" aria-pressed="false"><span class="rule-num"><small>RULE</small>03</span><span class="rule-icon" aria-hidden="true">📸</span><p>Memories must be made.</p><span class="rule-check" aria-hidden="true">✓</span><span class="rule-stamp" aria-hidden="true">AGREED</span></article>
+          <article class="rule reveal" role="button" tabindex="0" aria-pressed="false"><span class="rule-num"><small>RULE</small>04</span><span class="rule-icon" aria-hidden="true">👑</span><p>The groom must enjoy every second.</p><span class="rule-check" aria-hidden="true">✓</span><span class="rule-stamp" aria-hidden="true">AGREED</span></article>
+          <article class="rule reveal" role="button" tabindex="0" aria-pressed="false"><span class="rule-num"><small>RULE</small>05</span><span class="rule-icon" aria-hidden="true">🤫</span><p>What happens at the bachelor party becomes legendary!</p><span class="rule-check" aria-hidden="true">✓</span><span class="rule-stamp" aria-hidden="true">AGREED</span></article>
         </div>
+        <p class="rules-oath" id="rulesOath" role="status" aria-live="polite"></p>
       </section>
 
       <section class="gallery-section section-light" id="memories">
@@ -179,6 +218,8 @@
           <div><p class="eyebrow">A highly selective archive</p><h2>GOOD TIMES.<br /><span>QUESTIONABLE PHOTOS.</span></h2></div>
           <p>Tap a photo for a closer look.<br />Actual evidence may be added later.</p>
         </div>
+        <!-- PHOTOS: put your own images in the assets/photos/ folder and change both data-image and src below
+             (e.g. data-image="assets/photos/crew.jpg" src="assets/photos/crew.jpg"). Keep images ~1200px wide for fast loading. -->
         <div class="gallery-grid">
           <button class="gallery-item gallery-tall reveal" data-image="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=85" data-caption="The crew, before the group chat got muted." aria-label="Expand photo: the crew">
             <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=800&q=80" alt="Friends celebrating together at a party" loading="lazy" />
@@ -188,9 +229,9 @@
             <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80" alt="Colourful nightclub dance floor" loading="lazy" />
             <span class="gallery-caption"><i>02</i> DANCE-FLOOR DIPLOMACY</span><span class="gallery-expand">↗</span>
           </button>
-          <button class="gallery-item gallery-burgundy reveal" data-image="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=1200&q=85" data-caption="A toast to the groom and bride." aria-label="Expand photo: a toast">
+          <button class="gallery-item gallery-burgundy reveal" data-image="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=1200&q=85" data-caption="A toast to the groom." aria-label="Expand photo: a toast">
             <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=800&q=80" alt="Friends raising glasses in celebration" loading="lazy" />
-            <span class="gallery-caption"><i>03</i> A TOAST TO THE GROOM &amp; BRIDE</span><span class="gallery-expand">↗</span>
+            <span class="gallery-caption"><i>03</i> A TOAST TO THE GROOM</span><span class="gallery-expand">↗</span>
           </button>
           <button class="gallery-item gallery-wide reveal" data-image="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1400&q=85" data-caption="The night is young. The stories are forever." aria-label="Expand photo: party lights">
             <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80" alt="A crowd beneath dramatic concert lights" loading="lazy" />
@@ -204,31 +245,45 @@
         <div class="countdown-glow"></div>
         <div class="countdown-content reveal">
           <p class="eyebrow"><span class="live-dot"></span> The clock is ticking</p>
-          <h2>THE PARTY<br /><span>COUNTDOWN BEGINS!</span></h2>
+          <h2 id="countdownTitle">THE FREEDOM<br /><span>COUNTDOWN BEGINS!</span></h2>
           <div class="countdown" id="countdown" aria-label="Time remaining until the party">
             <div><strong id="days">000</strong><span>DAYS</span></div><i>:</i>
             <div><strong id="hours">00</strong><span>HOURS</span></div><i>:</i>
             <div><strong id="minutes">00</strong><span>MINUTES</span></div><i>:</i>
             <div><strong id="seconds">00</strong><span>SECONDS</span></div>
           </div>
-          <p class="countdown-note" id="countdownMessage">Time left to secure your alibi.</p>
+          <p class="countdown-note" id="countdownMessage">Time left before freedom officially expires.</p>
         </div>
         <div class="countdown-side">23.12.26<br />15:00 IST</div>
       </section>
 
-      <section class="finale-section">
+      <section class="finale-section" id="finale">
         <div class="finale-lights"></div>
+        <div class="finale-beams" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+        <div class="disco-ball" aria-hidden="true"></div>
         <div class="finale-confetti" aria-hidden="true"><span>✦</span><span>✳</span><span>✧</span><span>✦</span><span>✳</span><span>✧</span><span>✦</span><span>✳</span></div>
         <div class="finale-content reveal">
-          <p class="eyebrow">One last call before forever</p>
-          <div class="finale-icon">🥂</div>
+          <p class="eyebrow">Last call for legends</p>
+          <div class="finale-bottle" aria-hidden="true"><span class="bottle">🍾</span><span class="spray"><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
           <h2>LET'S MAKE<br /><span>THIS NIGHT</span><br />LEGENDARY!</h2>
-          <p class="finale-sub">ONE CELEBRATION. ONE AMAZING COUPLE.<br />A MILLION MEMORIES.</p>
-          <a class="button button-gold rsvp-button" href="https://api.whatsapp.com/send?text=I'm%20in%20for%20SA's%20Bachelor%20Party%20on%2023%20December%202026!%20See%20you%20at%20Avoki%20Resort." target="_blank" rel="noreferrer">I'm in — RSVP on WhatsApp <span aria-hidden="true">↗</span></a>
+          <p class="finale-sub">ONE BROTHER. ONE LAST BACHELOR NIGHT.<br />A MILLION MEMORIES.</p>
+          <a class="button button-gold rsvp-button" id="rsvpButton" href="https://api.whatsapp.com/send?text=I'm%20in%20for%20SA's%20Bachelor%20Party%20on%2023%20December%202026!%20See%20you%20at%20Avoki%20Resort." target="_blank" rel="noreferrer">I'm in — RSVP on WhatsApp <span aria-hidden="true">↗</span></a>
           <p class="see-you">SEE YOU AT THE PARTY!</p>
           <p class="finale-signature">SA’S BACHELOR PARTY <span>—</span> 2026</p>
         </div>
-        <div class="dancer dancer-left" aria-hidden="true">♟</div><div class="dancer dancer-right" aria-hidden="true">♟</div>
+        <svg class="dancer-defs" aria-hidden="true" width="0" height="0">
+          <symbol id="dancerShape" viewBox="0 0 100 200">
+            <circle cx="50" cy="24" r="13" />
+            <path d="M37 44 Q50 38 63 44 L84 8 L92 13 L68 58 L66 104 L72 150 L82 194 L68 197 L55 150 L50 116 L45 150 L33 197 L19 194 L29 150 L34 104 L32 58 L10 26 L17 19 Z" />
+          </symbol>
+        </svg>
+        <div class="dancers" aria-hidden="true">
+          <svg class="dancer-fig d1"><use href="#dancerShape" /></svg>
+          <svg class="dancer-fig d2"><use href="#dancerShape" /></svg>
+          <svg class="dancer-fig d3"><use href="#dancerShape" /></svg>
+          <svg class="dancer-fig d4"><use href="#dancerShape" /></svg>
+          <svg class="dancer-fig d5"><use href="#dancerShape" /></svg>
+        </div>
       </section>
     </main>
 
@@ -239,6 +294,7 @@
       <img id="lightboxImage" src="" alt="" />
       <p id="lightboxCaption"></p>
     </dialog>
+    <!-- MUSIC: leave src empty to use the built-in party beat, or set PARTY.musicSource in script.js to your own MP3. -->
     <audio id="partyMusic" loop preload="none" src=""></audio>
   </body>
 </html>

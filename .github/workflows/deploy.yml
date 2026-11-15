@@ -28,6 +28,8 @@ jobs:
         run: |
           mkdir _site
           cp index.html styles.css script.js sa-landing-reference.png _site/
+          # Optional folder for your own photos (assets/photos) and music (assets/music)
+          if [ -d assets ]; then cp -R assets _site/; fi
       - name: Upload site files
         uses: actions/upload-pages-artifact@v3
         with:
