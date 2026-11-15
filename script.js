@@ -13,7 +13,7 @@ const PARTY = {
   whatsappNumber: "",
   rsvpMessage: "I'm in for Shibu & Abhisha's (SA's) Bachelor Party on 23.12.2026 (3PM–10PM) at Avoki Resort! 🥂🕺 Count me in for the legendary night!",
   // Optional: path to your own MP3 (e.g. "assets/music/party.mp3"). Empty = built-in synthesized party beat.
-  musicSource: "assets/music/sms_bar_bgm.mp3",
+  musicSource: "assets/music/right_round.mp3",
 };
 
 const partyDate = new Date(PARTY.start);
