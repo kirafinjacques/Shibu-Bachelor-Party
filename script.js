@@ -3,11 +3,28 @@ const partyEndDate = new Date("2026-12-23T22:00:00+05:30");
 const audio = document.querySelector("#partyMusic");
 const soundToggle = document.querySelector("#soundToggle");
 const soundLabel = soundToggle.querySelector(".sound-label");
+const menuToggle = document.querySelector("#menuToggle");
+const mainNav = document.querySelector("#mainNav");
 const musicSource = ""; // Add a licensed audio file path here to enable background music.
 
 if (musicSource) {
   audio.src = musicSource;
 }
+
+menuToggle.addEventListener("click", () => {
+  const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
+  menuToggle.setAttribute("aria-expanded", String(!isExpanded));
+  menuToggle.setAttribute("aria-label", isExpanded ? "Open navigation" : "Close navigation");
+  document.querySelector(".site-header").classList.toggle("nav-open", !isExpanded);
+});
+
+mainNav.querySelectorAll("a").forEach((link) => {
+  link.addEventListener("click", () => {
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Open navigation");
+    document.querySelector(".site-header").classList.remove("nav-open");
+  });
+});
 
 soundToggle.addEventListener("click", async () => {
   if (!musicSource) {
