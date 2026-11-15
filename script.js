@@ -90,18 +90,18 @@ const eventEnd = partyEndDate.toISOString().replace(/[-:]/g, "").replace(/\.\d{3
 const calendarEvent = [
   "BEGIN:VCALENDAR",
   "VERSION:2.0",
-  "PRODID:-//Shibu's Bachelor Party//Invitation//EN",
+  "PRODID:-//SA's Bachelor Party//Invitation//EN",
   "BEGIN:VEVENT",
   `DTSTART:${eventStart}`,
   `DTEND:${eventEnd}`,
-  "SUMMARY:Shibu's Bachelor Party",
+  "SUMMARY:SA's Bachelor Party",
   "LOCATION:AVOKI RESORT\\, Kerala",
   "DESCRIPTION:One brother. One last bachelor night. A million memories.",
   "END:VEVENT",
   "END:VCALENDAR",
 ].join("\r\n");
 document.querySelector("#calendarLink").href = `data:text/calendar;charset=utf-8,${encodeURIComponent(calendarEvent)}`;
-document.querySelector("#calendarLink").download = "shibu-bachelor-party.ics";
+document.querySelector("#calendarLink").download = "sa-bachelor-party.ics";
 
 const lightbox = document.querySelector("#lightbox");
 const lightboxImage = document.querySelector("#lightboxImage");
