@@ -514,7 +514,7 @@ window.setInterval(updateCountdown, 1000);
 const toCalStamp = (date) => date.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
 const eventStart = toCalStamp(partyDate);
 const eventEnd = toCalStamp(partyEndDate);
-const eventDescription = `Celebrating Shibu & Abhisha. Good friends. Bad ideas. Unforgettable memories! Directions: ${PARTY.mapsUrl}`;
+const eventDescription = `Celebrating Shibu & Abhisha. Dress code: Glittery Black. Good friends. Bad ideas. Unforgettable memories! Directions: ${PARTY.mapsUrl}`;
 const calendarEvent = [
   "BEGIN:VCALENDAR",
   "VERSION:2.0",

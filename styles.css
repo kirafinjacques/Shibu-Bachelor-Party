@@ -1198,3 +1198,17 @@ body.entered .gate-content { opacity: 0; transform: scale(1.05); filter: blur(6p
 .quote-card p { position: relative; z-index: 1; }
 @media (max-width: 760px) { .quote-card p small { font-size: 11px; } }
 .quote-card:has(small) { padding-bottom: 58px; }
+
+/* ---------- v15: dress code row ---------- */
+.icon-dress { overflow: hidden; border-color: #2a2228; background: radial-gradient(circle at 35% 30%, #3a3036, #0d0a0c 70%); box-shadow: 0 0 0 1px #cfb98266, 0 4px 14px #0003; }
+.icon-dress i { position: absolute; color: #f3dca0; font-size: 9px; font-style: normal; line-height: 1; text-shadow: 0 0 6px #ffe9a8; animation: twinkle 1.8s ease-in-out infinite; }
+.icon-dress i:nth-child(1) { top: 9px; left: 11px; font-size: 11px; }
+.icon-dress i:nth-child(2) { top: 20px; right: 9px; font-size: 8px; animation-delay: -.6s; }
+.icon-dress i:nth-child(3) { bottom: 8px; left: 17px; font-size: 7px; animation-delay: -1.2s; }
+.glitter-text {
+  color: #141014; background: linear-gradient(100deg, #141014 0%, #141014 38%, #8f7a4c 46%, #f3dca0 50%, #8f7a4c 54%, #141014 62%, #141014 100%);
+  background-size: 260% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: glitterSweep 3.6s ease-in-out infinite;
+}
+@keyframes twinkle { 0%, 100% { opacity: .25; transform: scale(.6) rotate(0); } 50% { opacity: 1; transform: scale(1.15) rotate(45deg); } }
+@keyframes glitterSweep { 0% { background-position: 100% 0; } 60%, 100% { background-position: 0 0; } }
+@media (prefers-reduced-motion: reduce) { .glitter-text { -webkit-text-fill-color: #141014; } }
